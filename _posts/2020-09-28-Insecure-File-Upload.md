@@ -1,6 +1,6 @@
 ---
 title: Insecure File Upload Vulnerability Explained
-date: 2020-09-28 15:54:00 +0300
+date: 2020-09-28
 categories: [Web Security]
 tags: [file-upload, web, vulnerability]     # TAG names should always be lowercase
 ---
@@ -85,13 +85,13 @@ More of those can be found in:
 
 Another primitive check employed by developers is checking the content-type sent by the request to make sure it is an expected file-type. What they fail to realize is that just like every other field in a HTTP request, content-type can be modified by the user. 
 
-![Insecure%20File%20Upload%204bc365a31a534f1ca67e16fdced83c02/Screen_Shot_2020-05-25_at_3.38.42_PM.png](Insecure%20File%20Upload%204bc365a31a534f1ca67e16fdced83c02/Screen_Shot_2020-05-25_at_3.38.42_PM.png)
+![/assets/img/posts/insecure-file-upload/1.png](/assets/img/posts/insecure-file-upload/1.png)
 
 A normal request to upload php code to the site.
 
 This request can be modified to look like the following picture to avoid some server-side protection against file upload.
 
-![Insecure%20File%20Upload%204bc365a31a534f1ca67e16fdced83c02/Screen_Shot_2020-05-25_at_3.40.07_PM.png](Insecure%20File%20Upload%204bc365a31a534f1ca67e16fdced83c02/Screen_Shot_2020-05-25_at_3.40.07_PM.png)
+![/assets/img/posts/insecure-file-upload/2.png](/assets/img/posts/insecure-file-upload/2.png)
 
 If the developer only checks the type using the user supplied Content-Type header, it is awfully easy to bypass this check.
 
@@ -115,7 +115,7 @@ Sometimes adding the string seen above at the beginning of a file is enough to t
 
 Another method I prefer is embedding the malicious code directly into a PNG/JPEG file. This is as easy as copying the code and pasting it somewhere in the PNG file (except for the beginning). Once done, you can check the file type using the following command in UNIX based systems.
 
-![Insecure%20File%20Upload%204bc365a31a534f1ca67e16fdced83c02/Screen_Shot_2020-05-25_at_4.06.25_PM.png](Insecure%20File%20Upload%204bc365a31a534f1ca67e16fdced83c02/Screen_Shot_2020-05-25_at_4.06.25_PM.png)
+![/assets/img/posts/insecure-file-upload/3.png](/assets/img/posts/insecure-file-upload/3.png)
 
 In order to get RCE with this method, you have to find a way to send the file with the relevant file extension (.php in this case). If the system successfully prevents you from uploading files with that file extension, you can't run it once it is on the system. There are some examples, however, that let's user get a working shell by sending files with double extensions such as reverse-shell.php.jpeg.
 
