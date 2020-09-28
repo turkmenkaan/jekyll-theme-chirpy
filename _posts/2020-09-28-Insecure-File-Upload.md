@@ -1,6 +1,6 @@
 ---
 title: Insecure File Upload Vulnerability Explained
-date: 2020-09-27
+date: 2020-09-28
 categories: [Web Security]
 tags: [file-upload, web, vulnerability]     # TAG names should always be lowercase
 ---
